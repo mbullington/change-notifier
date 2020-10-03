@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import { useState, useCallback, useEffect, useMemo } from 'react';
 
 type VoidCallback = () => unknown;
@@ -46,7 +48,7 @@ export class ChangeNotifier {
 
   /**
    * Call all the registered listeners.
-   * 
+   *
    * Call this method whenever the object changes, to notify any clients the
    * object may have changed. Listeners that are added during this iteration
    * will not be visited. Listeners that are removed during this iteration **will**
@@ -65,7 +67,7 @@ export class ChangeNotifier {
  * When `value` is replaced with something that is not equal to the old
  * value as evaluated by the strict equality operator ===, this class notifies its
  * listeners.
- * 
+ *
  * Ported from: https://api.flutter.dev/flutter/foundation/ValueNotifier-class.html
  */
 export class ValueNotifier<T> extends ChangeNotifier {
@@ -76,8 +78,7 @@ export class ValueNotifier<T> extends ChangeNotifier {
   }
 
   set value(val: T) {
-    if (this._value === val)
-    this._value = val;
+    if (this._value === val) this._value = val;
     this.notifyListeners();
   }
 

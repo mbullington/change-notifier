@@ -1,5 +1,9 @@
 # change-notifier
 
+[![Actions Status](https://github.com/mbullington/change-notifier/workflows/CI/badge.svg)](https://github.com/mbullington/change-notifier/actions)
+
+[![npm version](https://badge.fury.io/js/change-notifier.svg)](https://badge.fury.io/js/change-notifier)
+
 Dead-simple state notifier for React. Under 1kb. Inspired by (meaning ported from!) Flutter.
 
 ```sh

@@ -45,9 +45,8 @@ describe('ChangeNotifier', () => {
     // @ts-ignore
     notifier.notifyListeners();
     expect(fn).toBeCalledTimes(3);
-  })
+  });
 });
-
 
 describe('ValueNotifier', () => {
   it('can add callback multiple times', () => {
@@ -57,8 +56,8 @@ describe('ValueNotifier', () => {
     notifier.addListener(fn);
     notifier.addListener(fn);
 
-    notifier.value++
-    notifier.value++
+    notifier.value++;
+    notifier.value++;
 
     expect(fn).toBeCalledTimes(4);
   });
@@ -70,54 +69,54 @@ describe('ValueNotifier', () => {
     notifier.addListener(fn);
     notifier.addListener(fn);
 
-    notifier.value++
-    expect(notifier.value).toBe(1)
+    notifier.value++;
+    expect(notifier.value).toBe(1);
     expect(fn).toBeCalledTimes(2);
 
     notifier.removeListener(fn);
 
-    notifier.value++
-    expect(notifier.value).toBe(2)
+    notifier.value++;
+    expect(notifier.value).toBe(2);
     expect(fn).toBeCalledTimes(3);
 
     notifier.removeListener(fn);
 
-    notifier.value++
-    expect(notifier.value).toBe(3)
+    notifier.value++;
+    expect(notifier.value).toBe(3);
     expect(fn).toBeCalledTimes(3);
-  })
+  });
 });
 
 test('useChangeNotifier', () => {
-  const notifier = new ChangeNotifier()
-  const { result } = renderHook(() => useChangeNotifier(notifier))
+  const notifier = new ChangeNotifier();
+  const { result } = renderHook(() => useChangeNotifier(notifier));
 
-  expect(result.current).toBe(false)
-
-  act(() => {
-    // @ts-ignore
-    notifier.notifyListeners();
-  })
-
-  expect(result.current).toBe(true)
+  expect(result.current).toBe(false);
 
   act(() => {
     // @ts-ignore
     notifier.notifyListeners();
-  })
+  });
 
-  expect(result.current).toBe(false)
-})
+  expect(result.current).toBe(true);
+
+  act(() => {
+    // @ts-ignore
+    notifier.notifyListeners();
+  });
+
+  expect(result.current).toBe(false);
+});
 
 test('useValueNotifier', () => {
-  const notifier = new ValueNotifier<number>(10)
-  const { result } = renderHook(() => useValueNotifier(notifier))
+  const notifier = new ValueNotifier<number>(10);
+  const { result } = renderHook(() => useValueNotifier(notifier));
 
-  expect(result.current).toBe(10)
+  expect(result.current).toBe(10);
 
   act(() => {
-    notifier.value++
-  })
+    notifier.value++;
+  });
 
-  expect(result.current).toBe(11)
-})
+  expect(result.current).toBe(11);
+});
