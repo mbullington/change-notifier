@@ -78,7 +78,7 @@ export class ValueNotifier<T> extends ChangeNotifier {
   }
 
   set value(val: T) {
-    if (this._value === val) this._value = val;
+    if (this._value !== val) this._value = val;
     this.notifyListeners();
   }
 
