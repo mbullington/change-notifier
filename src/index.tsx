@@ -102,10 +102,17 @@ export function useChangeNotifier(notifier: ChangeNotifier): boolean {
   }, []);
 
   useEffect(() => {
-    notifier.addListener(update);
+    let cancelled: boolean = false;
+    const listener = () => {
+      if (!cancelled) {
+        update();
+      }
+    };
+    notifier.addListener(listener);
 
     return () => {
-      notifier.removeListener(update);
+      cancelled = true;
+      notifier.removeListener(listener);
     };
   }, [notifier, update]);
 
